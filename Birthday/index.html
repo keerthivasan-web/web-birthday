@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Priya Angel</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #ffe0f0;
+      padding: 30px;
+      overflow-x: hidden;
+      position: relative;
+    }
+    h1 {
+      color: #d63384;
+      font-size: 3rem;
+      animation: fadeInDown 1.2s ease-out;
+    }
+    h2 {
+      color: #ff69b4;
+      font-size: 2rem;
+      animation: fadeIn 2s ease-out;
+    }
+    .btn {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 20px;
+      animation: slideUp 2s ease-out;
+    }
+
+    .image-container {
+      display: inline-block;
+      perspective: 1000px;
+      margin: 20px;
+    }
+
+    .rotating-image {
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      animation: spin 10s linear infinite;
+      transition: transform 0.1s ease-out;
+      transform-style: preserve-3d;
+    }
+
+    @keyframes spin {
+      from { transform: rotateY(0deg); }
+      to { transform: rotateY(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Balloon Animation */
+    .balloon {
+      position: absolute;
+      width: 40px;
+      height: 60px;
+      background-color: pink;
+      border-radius: 50% 50% 45% 45%;
+      animation: floatUp 12s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -100px;
+        transform: translateX(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        bottom: 110%;
+        transform: translateX(50px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Popup Modal */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      z-index: 999;
+      display: none;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    .popup h3 {
+      margin-top: 0;
+      color: #d63384;
+    }
+
+    .popup button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎂 Happy Kuva Kuva day di Priya Angel! 🎉</h1>
+  <h2>May your day be filled with joy and magic babe✨</h2>
+
+  <button class="btn" id="toggleButton" onclick="toggleSong()">▶️ CLICK PANNI KELUDI 🎶</button>
+  <br/>
+
+  <!-- Images -->
+  <div class="image-container">
+    <img src="./priya-angel.jpg" class="rotating-image" alt="Priya Angel">
+  </div>
+  <div class="image-container">
+    <img src="./494687778_591303253977731_4177538808537263697_n.jpg" class="rotating-image" alt="Priya Angel">
+  </div>
+  <div class="image-container">
+    <img src="./473552808_1027373972752801_638626911811759524_n.jpg" class="rotating-image" alt="Priya Angel">
+  </div>
+  <h4>❤️I LOVE YOU ❤️</h4>
+
+  <!-- Balloons -->
+  <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="balloon" style="left: 30%; animation-delay: 2s;"></div>
+  <div class="balloon" style="left: 50%; animation-delay: 4s;"></div>
+  <div class="balloon" style="left: 70%; animation-delay: 6s;"></div>
+  <div class="balloon" style="left: 90%; animation-delay: 8s;"></div>
+
+  <!-- Popup Modal -->
+  <div class="popup" id="birthdayPopup">
+    <h3>🎉 Surprise Jeeva! 🎉</h3>
+    <p>You are the most precious angel ever! 🌟</p>
+    <button onclick="closePopup()">Awww 🥹</button>
+  </div>
+
+  <audio id="birthdaySong" autoplay loop>
+    <source src="./Tholiya-En-Kadhaliya (mp3cut.net).mp3" type="audio/mp3">
+    this one is for my tholi
+  </audio>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    const song = document.getElementById('birthdaySong');
+    const button = document.getElementById('toggleButton');
+    const popup = document.getElementById('birthdayPopup');
+    let isPlaying = false;
+
+    window.onload = () => {
+      song.play();
+      triggerConfetti();
+      setTimeout(() => {
+        popup.style.display = 'block';
+      }, 3000);
+    };
+
+    function toggleSong() {
+      if (isPlaying) {
+        song.pause();
+        song.currentTime = 0;
+        button.innerText = "▶️ CLICK PANNI KELUDI 🎶";
+        isPlaying = false;
+      } else {
+        song.play();
+        triggerConfetti();
+        button.innerText = "⏹️ STOP PANNU 🎶";
+        isPlaying = true;
+      }
+    }
+
+    function triggerConfetti() {
+      const duration = 8 * 1000;
+      const end = Date.now() + duration;
+
+      (function frame() {
+        confetti({
+          particleCount: 10,
+          angle: 60,
+          spread: 60,
+          origin: { x: 0 }
+        });
+        confetti({
+          particleCount: 10,
+          angle: 120,
+          spread: 60,
+          origin: { x: 1 }
+        });
+        if (Date.now() < end) {
+          requestAnimationFrame(frame);
+        }
+      })();
+    }
+
+    function closePopup() {
+      popup.style.display = 'none';
+    }
+
+    // Image Interactivity
+    const images = document.querySelectorAll('.rotating-image');
+    images.forEach(image => {
+      function setRotation(x) {
+        const rotate = (x / window.innerWidth - 0.5) * 60;
+        image.style.animation = 'none';
+        image.style.transform = `rotateY(${rotate}deg) scale(1.05)`;
+      }
+      image.addEventListener('mousemove', e => setRotation(e.clientX));
+      image.addEventListener('touchmove', e => {
+        if (e.touches.length > 0) setRotation(e.touches[0].clientX);
+      });
+      image.addEventListener('mouseleave', () => {
+        image.style.animation = 'spin 30s linear infinite';
+      });
+      image.addEventListener('touchend', () => {
+        image.style.animation = 'spin 30s linear infinite';
+      });
+    });
+  </script>
+
+</body>
+</html>
